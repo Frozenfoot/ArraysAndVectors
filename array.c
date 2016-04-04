@@ -6,10 +6,10 @@
 
 int main(int argc, char *argv[])
 {
-    if(!fp)
+    if(argc != 2)
     {
-        printf("Cannot open file\n");
-        return -1;
+        printf("Wrong number of command line arguments\n");
+        return 1;
     }
     FILE *fp = fopen(argv[1] , "a+");
     if(!fp)
