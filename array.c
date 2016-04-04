@@ -4,9 +4,14 @@
 #define ARRAY_SIZE 1000
 
 
-int main()
+int main(int argc, char *argv[])
 {
-    FILE *fp = fopen("C:\\Games\\StaticArrayTimer.txt", "a+");
+    FILE *fp = fopen(argv[1] , "a+");
+    if(!fp)
+    {   
+        printf("Cannot open file\n");
+        return -1;
+    }
     long start = clock();
     static double arr[ARRAY_SIZE][ARRAY_SIZE];
     for(int i = 0; i < ARRAY_SIZE; i ++)
@@ -17,7 +22,7 @@ int main()
         }
     }
     long finish = clock();
-    printf("%d\t%.2f\n", ARRAY_SIZE,(float)(finish - start) / CLOCKS_PER_SEC * 1000);
+    fprintf("%d\t%.2f\n", ARRAY_SIZE,(float)(finish - start) / CLOCKS_PER_SEC * 1000);
     fclose(fp);
     return 0;
 }
