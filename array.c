@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
         }
     }
     long finish = clock();
-    fprintf("%d\t%.2f\n", ARRAY_SIZE,(float)(finish - start) / CLOCKS_PER_SEC * 1000);
+    fprintf(fp, "%d\t%.2f\n", ARRAY_SIZE,(float)(finish - start) / CLOCKS_PER_SEC * 1000);
     fclose(fp);
     return 0;
 }
