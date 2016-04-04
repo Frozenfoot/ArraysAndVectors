@@ -4,9 +4,19 @@
 #define ARRAY_SIZE 17000
 
 
-int main()
+int main(int argc, char *argv[])
 {
-    FILE *fp = fopen("C:\\Games\\DynamicArrayTimer.txt", "a+");
+    if(argc != 2)
+    {
+        printf("Incorrect number of arguments\n");
+        return 1;
+    }
+    FILE *fp = fopen(argv[1], "a+");
+    if(!fp)
+    {
+        printf("Cannot open file\n");
+        return -1;
+    }
     long start = clock();
     double **table = malloc(ARRAY_SIZE * sizeof(double*));
     if (!table)
