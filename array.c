@@ -6,6 +6,11 @@
 
 int main(int argc, char *argv[])
 {
+    if(!fp)
+    {
+        printf("Cannot open file\n");
+        return -1;
+    }
     FILE *fp = fopen(argv[1] , "a+");
     if(!fp)
     {   
