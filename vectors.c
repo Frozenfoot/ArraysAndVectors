@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define ARRAY_SIZE 17000
 
 
 int main(int argc, char *argv[])
 {
-    if(argc != 2)
+    if(argc != 3)
     {
         printf("Incorrect number of arguments\n");
         return 1;
@@ -17,6 +16,7 @@ int main(int argc, char *argv[])
         printf("Cannot open file\n");
         return -1;
     }
+    int ARRAY_SIZE = atoi(argv[2]);
     long start = clock();
     double **table = malloc(ARRAY_SIZE * sizeof(double*));
     if (!table)
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     fprintf(fp, "%d\t%.2f\n", ARRAY_SIZE,(float)(finish - start) / CLOCKS_PER_SEC * 1000);
     for(int i = 0; i < ARRAY_SIZE; i ++)
         free(table[i]);
-    free (table);
+    free(table);
     fclose(fp);
     return 0;
 }
